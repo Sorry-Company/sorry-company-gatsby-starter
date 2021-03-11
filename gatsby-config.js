@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: "sorry company gatsby starter",
+    title: "Sorry Company Gatsby Starter", // TODO: Update site title
+    description: "GatsbyJS starter with SASS, TypeScript, ThemeContext and Bootstrap pre-configured.", // TODO: Update site description
+    author: "Sorry Company <contact@srrycmpny.com>",
+    siteUrl: "https://siteurl.com", // TODO: Update site url
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -9,7 +12,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "",
+        trackingId: "tracking-id", // TODO: Update GA tracking id
       },
     },
     "gatsby-plugin-react-helmet",
@@ -17,7 +20,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        icon: "src/images/icon.png", // TODO: Update site icon
       },
     },
     "gatsby-plugin-sharp",

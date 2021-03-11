@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "sorry company gatsby starter",
-  "author": "thmsmtylr",
+  "author": "Sorry Company <contact@srrycmpny.com>",
   "keywords": [
     "gatsby"
   ],
@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "bootstrap": "^5.0.0-beta2",
     "gatsby": "^3.0.1",
     "gatsby-plugin-gatsby-cloud": "^2.0.0",
     "gatsby-plugin-google-analytics": "^3.0.0",
@@ -30,5 +31,8 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "sass": "^1.32.8"
+  },
+  "devDependencies": {
+    "@types/react-helmet": "^6.1.0"
   }
 }
