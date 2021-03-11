@@ -11,7 +11,11 @@
 // Global.
 
 // Components.
+@import "./components/header";
+@import "./components/navigation";
+@import "./components/footer";
 
 // Pages.
+@import "./pages/404";
 
 // Templates.
