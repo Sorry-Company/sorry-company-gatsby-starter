@@ -1,8 +1,14 @@
-import React from "react"
+import * as React from "react"
 import ThemeContext from "../context/ThemeContext"
 import '../styles/index.scss'
 
-export default function Layout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+export default function Layout(props: LayoutProps) {
+  const { children } = props
+
   return (
     <ThemeContext.Consumer>
       {theme => (
