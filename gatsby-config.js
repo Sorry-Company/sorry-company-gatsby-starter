@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: "Sorry Company Gatsby Starter", // TODO: Update site title
@@ -33,5 +37,6 @@ module.exports = {
       },
       __key: "images",
     },
+    "gatsby-plugin-preload-fonts",
   ],
 };
