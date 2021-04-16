@@ -38,5 +38,18 @@ module.exports = {
       __key: "images",
     },
     "gatsby-plugin-preload-fonts",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+          options: {
+            props: {
+              className: 'svg',
+            },
+          },
+        },
+      },
+    },
   ],
 };
