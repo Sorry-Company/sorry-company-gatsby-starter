@@ -2,12 +2,26 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_AUTHOR,
+  SITE_URL,
+  SITE_LANGUAGE,
+  SITE_ICON_PATH,
+  SITE_BACKGROUND_COLOR,
+  SITE_THEME_COLOR,
+  GOOGLE_ANALYTICS_ID,
+  FACEBOOK_PIXEL_ID,
+} = process.env;
+
 module.exports = {
   siteMetadata: {
-    title: "Sorry Company Gatsby Starter", // TODO: Update site title
-    description: "GatsbyJS starter with SASS, TypeScript, ThemeContext and Bootstrap pre-configured.", // TODO: Update site description
-    author: "Sorry Company <contact@srrycmpny.com>",
-    siteUrl: "https://siteurl.com", // TODO: Update site url
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    author: SITE_AUTHOR,
+    siteUrl: SITE_URL,
+    lang: SITE_LANGUAGE,
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -16,7 +30,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "tracking-id", // TODO: Update GA tracking id
+        trackingId: GOOGLE_ANALYTICS_ID,
       },
     },
     "gatsby-plugin-react-helmet",
@@ -24,7 +38,16 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png", // TODO: Update site icon
+        icon: SITE_ICON_PATH,
+        name: SITE_TITLE,
+        short_name: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        lang: SITE_LANGUAGE,
+        display: "standalone",
+        icon: SITE_ICON_PATH,
+        start_url: `/`,
+        background_color: SITE_BACKGROUND_COLOR,
+        theme_color: SITE_THEME_COLOR,
       },
     },
     "gatsby-plugin-sharp",
@@ -52,5 +75,17 @@ module.exports = {
       },
     },
     "gatsby-plugin-react-axe",
+    {
+      resolve: "gatsby-plugin-canonical-urls",
+      options: {
+        siteUrl: SITE_URL,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-facebook-pixel",
+      options: {
+        pixelId: FACEBOOK_PIXEL_ID,
+      },
+    },
   ],
 };
