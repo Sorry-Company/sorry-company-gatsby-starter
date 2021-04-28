@@ -1,15 +1,14 @@
-import React, { useContext } from "react"
+import React, { useContext, ReactNode } from "react"
 import ThemeContext from "../context/ThemeContext"
-import SEO from '../components/seo'
 import '../styles/index.scss'
 
 interface LayoutProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export default function Layout(props: LayoutProps) {
   const { children } = props
-  const { dark } = useContext(ThemeContext)
+  const { themeDark } = useContext(ThemeContext)
 
-  return <div className={dark ? 'dark' : 'light'}>{children}</div>
+  return <div className={themeDark ? 'theme-dark' : 'theme-light'}>{children}</div>
 }

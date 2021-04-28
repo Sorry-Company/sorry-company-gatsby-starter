@@ -1,53 +1,56 @@
-import React, { Component, createContext } from "react"
+import React, { ReactNode, createContext, useEffect, useState } from "react"
+
+interface DefaultStateProps {
+  themeDark: boolean
+  toggleDark: () => void
+}
 
 const defaultState = {
-  dark: false,
+  themeDark: false,
   toggleDark: () => {},
 }
 
-const ThemeContext = createContext(defaultState)
+const ThemeContext = createContext<DefaultStateProps>(defaultState)
 // Getting dark mode information from OS!
 // You need macOS Mojave + Safari Technology Preview Release 68 to test this currently.
 const supportsDarkMode = () =>
   window.matchMedia("(prefers-color-scheme: dark)").matches === true
 
-class ThemeProvider extends Component {
-  state = {
-    dark: false,
-  }
+interface ThemeProviderProps {
+  children: ReactNode 
+}
 
-  toggleDark = () => {
-    let dark = !this.state.dark
-    localStorage.setItem("dark", JSON.stringify(dark))
-    this.setState({ dark })
-  }
+const ThemeProvider = (props: ThemeProviderProps) => {
+  const { children } = props
+  const [themeDark, setThemeDark] = useState<boolean>(false)
 
-  componentDidMount() {
+  useEffect(() => {
     // Getting dark mode value from localStorage!
     const lsDark = JSON.parse(localStorage.getItem("dark"))
-  
+
     if (lsDark) {
-      this.setState({ dark: lsDark })
+      setThemeDark(true)
     } else if (supportsDarkMode()) {
-      this.setState({ dark: true })
+      setThemeDark(true)
     }
+  }, [])
+
+  const toggleDark = () => {
+    let dark = !themeDark
+    localStorage.setItem("dark", JSON.stringify(dark))
+    setThemeDark(dark)
   }
 
-  render() {
-    const { children } = this.props
-    const { dark } = this.state
-
-    return (
-      <ThemeContext.Provider
+  return (
+    <ThemeContext.Provider
         value={{
-          dark,
-          toggleDark: this.toggleDark,
-        }}
-      >
-        {children}
-      </ThemeContext.Provider>
-    )
-  }
+        themeDark,
+        toggleDark: toggleDark,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 
 export default ThemeContext

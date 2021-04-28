@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FC } from "react"
 import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
@@ -12,7 +12,7 @@ interface SEOProps {
   title: string,
 }
 
-const SEO: React.FC<SEOProps> = ({ description, lang, meta = [], keywords, title }) => (
+const SEO: FC<SEOProps> = ({ description, lang, meta = [], keywords, title }) => (
   <StaticQuery
     query={siteMetadataQuery}
     render={data => {
