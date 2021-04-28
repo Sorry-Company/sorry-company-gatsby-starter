@@ -5,6 +5,7 @@ require('dotenv').config({
 const {
   SITE_TITLE,
   SITE_DESCRIPTION,
+  SITE_KEYWORDS,
   SITE_AUTHOR,
   SITE_URL,
   SITE_LANGUAGE,
@@ -19,9 +20,11 @@ module.exports = {
   siteMetadata: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
     author: SITE_AUTHOR,
     siteUrl: SITE_URL,
     lang: SITE_LANGUAGE,
+    icon: SITE_ICON_PATH,
   },
   plugins: [
     "gatsby-plugin-sass",
