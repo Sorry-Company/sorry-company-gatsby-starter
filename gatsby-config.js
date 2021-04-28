@@ -90,6 +90,5 @@ module.exports = {
         pixelId: FACEBOOK_PIXEL_ID,
       },
     },
-    "gatsby-plugin-netlify-cache",
   ],
 };
